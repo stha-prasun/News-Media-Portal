@@ -619,6 +619,11 @@ tr:hover td {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .charts-row,
+  .bottom-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -660,6 +665,29 @@ tr:hover td {
   .stat-value {
     font-size: 26px;
   }
+
+  .layout {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .main {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .content {
+    overflow-y: visible;
+  }
+
+  table {
+    min-width: 500px;
+  }
+
+  .pie-svg {
+    width: 160px;
+    height: 160px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -671,5 +699,40 @@ tr:hover td {
   }
   .content {
     padding: 14px;
+  }
+
+  .chart-card {
+    padding: 16px;
+  }
+
+  .bar-chart {
+    gap: 6px;
+  }
+
+  .bar-label {
+    font-size: 8px;
+  }
+
+  .pie-svg {
+    width: 140px;
+    height: 140px;
+  }
+
+  .pie-item {
+    min-width: 90px;
+  }
+
+  .pie-item-label,
+  .pie-item-val {
+    font-size: 11px;
+  }
+
+  table {
+    min-width: 420px;
+  }
+
+  th, td {
+    padding: 10px 10px;
+    font-size: 11px;
   }
 }
