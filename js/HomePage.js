@@ -56,31 +56,75 @@ window.addEventListener("scroll", () => {
   }
 });
 
+// ======= MAIN SLIDESHOW =======
 let slideIndex = 1;
 showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+  showSlides((slideIndex += n));
 }
 
 // Thumbnail image controls
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+  showSlides((slideIndex = n));
 }
 
 function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("mySlides");
   let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
 }
+
+// ======= DYNAMIC SLIDESHOWS =======
+document.querySelectorAll(".news-slideshow").forEach((slideshow) => {
+  let slides = slideshow.querySelectorAll(".news-slide");
+  let dots = slideshow.parentElement.querySelectorAll(".news-dot");
+  let index = 0;
+
+  function showSlide(n) {
+    if (n >= slides.length) index = 0;
+    if (n < 0) index = slides.length - 1;
+
+    slides.forEach((s) => (s.style.display = "none"));
+    dots.forEach((d) => d.classList.remove("active"));
+
+    slides[index].style.display = "block";
+    dots[index].classList.add("active");
+  }
+
+  // Show first slide
+  showSlide(index);
+
+  // Next/Prev buttons
+  slideshow.querySelector(".news-prev").addEventListener("click", () => {
+    index--;
+    showSlide(index);
+  });
+  slideshow.querySelector(".news-next").addEventListener("click", () => {
+    index++;
+    showSlide(index);
+  });
+
+  // Dot click
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      index = i;
+      showSlide(index);
+    });
+  });
+});
