@@ -90,41 +90,28 @@ function showSlides(n) {
   dots[slideIndex - 1].className += " active";
 }
 
-// ======= DYNAMIC SLIDESHOWS =======
-document.querySelectorAll(".news-slideshow").forEach((slideshow) => {
-  let slides = slideshow.querySelectorAll(".news-slide");
-  let dots = slideshow.parentElement.querySelectorAll(".news-dot");
-  let index = 0;
+const slider = document.querySelector(".slider");
+const nextBtn = document.querySelector(".sl-next");
+const prevBtn = document.querySelector(".sl-prev");
 
-  function showSlide(n) {
-    if (n >= slides.length) index = 0;
-    if (n < 0) index = slides.length - 1;
+const cardWidth = 320;
 
-    slides.forEach((s) => (s.style.display = "none"));
-    dots.forEach((d) => d.classList.remove("active"));
-
-    slides[index].style.display = "block";
-    dots[index].classList.add("active");
-  }
-
-  // Show first slide
-  showSlide(index);
-
-  // Next/Prev buttons
-  slideshow.querySelector(".news-prev").addEventListener("click", () => {
-    index--;
-    showSlide(index);
-  });
-  slideshow.querySelector(".news-next").addEventListener("click", () => {
-    index++;
-    showSlide(index);
-  });
-
-  // Dot click
-  dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => {
-      index = i;
-      showSlide(index);
-    });
-  });
+nextBtn.addEventListener("click", () => {
+slider.scrollLeft += cardWidth;
 });
+
+prevBtn.addEventListener("click", () => {
+slider.scrollLeft -= cardWidth;
+});
+
+
+// Auto slide
+
+setInterval(()=>{
+slider.scrollLeft += cardWidth;
+
+if(slider.scrollLeft + slider.clientWidth >= slider.scrollWidth){
+slider.scrollLeft = 0;
+}
+
+},4000);
