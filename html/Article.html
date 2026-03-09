@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article Page </title>
+    <title>Nepal Global News</title>
     <link rel="stylesheet" href="../css/Article.css">
 </head>
 <body>
     <!-- Header -->
     <header>
-      <h2 class="logo">The NGN</h2>
+      <a href="HomePage.html">
+        <h2 class="logo">The NGN</h2>
+      </a>
       <nav class="navigation">
         <a href="Article.html" class="active">News</a>
         <a href="#">About Us</a>
-        <a href="#">Admin Panel</a>
+        <a href="Admin.html">Admin Panel</a>
       </nav>
       <div class="hamburger">
         <span></span>
@@ -24,161 +26,459 @@
 
     <!-- Breaking News Ticker -->
     <div class="ticker">
-        <div class="ticker-label-box"></div>
-        <div class="ticker-content-box"></div>
+        <div class="container">
+            <span class="ticker-label">Breaking News</span>
+            <div class="ticker-content">
+                <div class="ticker-scroll">
+                    <span>Global markets reach all-time highs amid economic optimism</span>
+                    <span>Climate summit reaches historic agreement on emissions</span>
+                    <span>Tech giants announce major AI breakthrough</span>
+                    <span>International space station welcomes new crew members</span>
+                    <span>World leaders gather for peace summit in Geneva</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main">
         <div class="container">
             <!-- Hero Section -->
             <section class="hero-section">
-                <div class="hero-article-box">
-
-                </div>
-                <div class="hero-sidebar">
-                    <div class="sidebar-box">
-
-                    </div>
-                    <div class="sidebar-box">
-
-                    </div>
-                    <div class="sidebar-box"></div>
-                </div>
+                <article class="hero-article">
+                    <a href="../html/SingleArticle.html">
+                        <div class="hero-image">
+                            <img src="../Assets/ArticlePage/Newspaper.jpg" alt="Global Summit">
+                            <span class="category-tag">World</span>
+                        </div>
+                        <div class="hero-content">
+                            <h1>World Leaders Unite at Historic Climate Summit to Address Global Crisis</h1>
+                            <p>In an unprecedented gathering, representatives from over 190 countries have committed to ambitious new targets for reducing carbon emissions. The landmark agreement signals a turning point in international cooperation on environmental issues.</p>
+                            <div class="article-meta">
+                                <span class="author">By Sarah Johnson</span>
+                                <span class="date">March 8, 2026</span>
+                                <span class="read-time">8 min read</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <aside class="hero-sidebar">
+                    <article class="sidebar-article">
+                        <a href="../html/SingleArticle.html">
+                            <div class="sidebar-image">
+                                <img src="../Assets/ArticlePage/Tradingdownhill.jpg" alt="Stock Market">
+                            </div>
+                            <div class="sidebar-content">
+                                <span class="category-tag small">Business</span>
+                                <h3>Markets Surge as Fed Signals Rate Stability</h3>
+                                <span class="date">2 hours ago</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="sidebar-article">
+                        <a href="../html/SingleArticle.html">
+                            <div class="sidebar-image">
+                                <img src="../Assets/ArticlePage/ChipInternals.jpg" alt="Technology">
+                            </div>
+                            <div class="sidebar-content">
+                                <span class="category-tag small">Technology</span>
+                                <h3>Revolutionary AI System Passes Major Medical Certification</h3>
+                                <span class="date">4 hours ago</span>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="sidebar-article">
+                        <a href="../html/SingleArticle.html">
+                            <div class="sidebar-image">
+                                <img src="../Assets/ArticlePage/A football and feet.jpg" alt="Sports">
+                            </div>
+                            <div class="sidebar-content">
+                                <span class="category-tag small">Sports</span>
+                                <h3>Championship Finals Set After Dramatic Semi-Final Showdowns</h3>
+                                <span class="date">5 hours ago</span>
+                            </div>
+                        </a>
+                    </article>
+                </aside>
             </section>
 
             <!-- Top Stories -->
             <section class="section">
-                <div class="section-header-box">
-
+                <div class="section-header">
+                    <h2>Top Stories</h2>
+                    <a href="#" class="see-all">See All</a>
                 </div>
                 <div class="articles-grid">
-                    <div class="article-card-box">
-
-                    </div>
-                    <div class="article-card-box">
-
-                    </div>
-                    <div class="article-card-box">
-
-                    </div>
-                    <div class="article-card-box">
-
-                    </div>
+                    <article class="article-card">
+                        <a href="../html/SingleArticle.html">
+                            <div class="card-image">
+                                <img src="../Assets/ArticlePage/A Music Theatre.jpg" alt="Politics">
+                                <span class="category-tag small">Politics</span>
+                            </div>
+                            <div class="card-content">
+                                <h3>Senate Passes Landmark Infrastructure Bill After Months of Debate</h3>
+                                <p>The comprehensive package includes funding for roads, bridges, broadband, and clean energy initiatives.</p>
+                                <div class="article-meta">
+                                    <span class="date">3 hours ago</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="article-card">
+                        <a href="../html/SingleArticle.html">
+                            <div class="card-image">
+                                <img src="../Assets/ArticlePage/DoctorinPhone.jpg" alt="Health">
+                                <span class="category-tag small">Health</span>
+                            </div>
+                            <div class="card-content">
+                                <h3>New Study Reveals Promising Results for Universal Vaccine Development</h3>
+                                <p>Researchers announce breakthrough in creating broad-spectrum immunity against multiple variants.</p>
+                                <div class="article-meta">
+                                    <span class="date">4 hours ago</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="article-card">
+                        <a href="../html/SingleArticle.html">
+                            <div class="card-image">
+                                <img src="../Assets/ArticlePage/Spacepi.jpg" alt="Science">
+                                <span class="category-tag small">Science</span>
+                            </div>
+                            <div class="card-content">
+                                <h3>NASA Confirms Discovery of Water on Distant Exoplanet</h3>
+                                <p>James Webb telescope data reveals potential for life-supporting conditions beyond our solar system.</p>
+                                <div class="article-meta">
+                                    <span class="date">5 hours ago</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="article-card">
+                        <a href="../html/SingleArticle.html">
+                            <div class="card-image">
+                                <img src="../Assets/ArticlePage/A guy.jpg" alt="Entertainment">
+                                <span class="category-tag small">Entertainment</span>
+                            </div>
+                            <div class="card-content">
+                                <h3>Award Season Begins with Surprising Nominations Across Categories</h3>
+                                <p>Streaming platforms dominate this year's list of nominees in major entertainment awards.</p>
+                                <div class="article-meta">
+                                    <span class="date">6 hours ago</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
                 </div>
             </section>
 
-            <!-- Two Column Layout -->
+            <!-- Two Column Section -->
             <div class="two-column">
                 <!-- World News -->
                 <section class="section">
-                    <div class="section-header-box">
-
+                    <div class="section-header">
+                        <h2>World News</h2>
+                        <a href="#" class="see-all">See All</a>
                     </div>
                     <div class="articles-list">
-                        <div class="list_article_box">
-
-                        </div>
-                        <div class="list_article_box">
-
-                        </div>
-                        <div class="list_article_box">
-
-                        </div>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/WorldMap.jpg" alt="Europe">
+                                </div>
+                                <div class="list-content">
+                                    <h4>European Union Announces New Trade Partnership with Asia-Pacific Nations</h4>
+                                    <span class="date">1 hour ago</span>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/Autraliamonument.jpg" alt="Australia">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Australia Implements Ambitious Renewable Energy Initiative</h4>
+                                    <span class="date">3 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/Chinesemonument.jpg" alt="Middle East">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Middle East Summit Yields Progress on Regional Cooperation</h4>
+                                    <span class="date">5 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/Dried Tree.jpg" alt="Africa">
+                                </div>
+                                <div class="list-content">
+                                    <h4>African Nations Launch Continental Free Trade Agreement</h4>
+                                    <span class="date">7 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
                     </div>
                 </section>
 
                 <!-- Business -->
                 <section class="section">
-                    <div class="section-header-box">
-
+                    <div class="section-header">
+                        <h2>Business</h2>
+                        <a href="#" class="see-all">See All</a>
                     </div>
                     <div class="articles-list">
-                        <div class="list_article_box">
-
-                        </div>
-                        <div class="list_article_box">
-
-                        </div>
-                        <div class="list_article_box">
-
-                        </div>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/graphpc.jpg" alt="Tech">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Major Tech Merger Creates Industry Giant Worth $500 Billion</h4>
+                                    <span class="date">2 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/marketgraphmobile.jpg" alt="Crypto">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Central Banks Explore Digital Currency Implementation</h4>
+                                    <span class="date">4 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/Accountant.jpg" alt="Economy">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Global Supply Chain Shows Signs of Recovery After Disruptions</h4>
+                                    <span class="date">6 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/Money$.jpg" alt="Finance">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Investment Trends Shift Toward Sustainable Energy Sector</h4>
+                                    <span class="date">8 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
                     </div>
                 </section>
             </div>
 
             <!-- Technology Section -->
             <section class="section">
-                <div class="section-header-box">
-
+                <div class="section-header">
+                    <h2>Technology</h2>
+                    <a href="#" class="see-all">See All</a>
                 </div>
-                <div class="articles-grid tech-grid">
-                    <div class="article-card-box tall">
-
-                    </div>
-                    <div class="article-card-box tall">
-
-                    </div>
-                    <div class="article-card-box tall">
-
-                    </div>
+                <div class="articles-grid three-col">
+                    <article class="article-card">
+                        <a href="../html/SingleArticle.html">
+                            <div class="card-image">
+                                <img src="../Assets/ArticlePage/Ai.jpg" alt="AI">
+                            </div>
+                            <div class="card-content">
+                                <h3>AI Revolution: How Machine Learning is Transforming Healthcare</h3>
+                                <p>Artificial intelligence systems are now capable of diagnosing diseases with unprecedented accuracy.</p>
+                                <div class="article-meta">
+                                    <span class="date">2 hours ago</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="article-card">
+                        <a href="../html/SingleArticle.html">
+                            <div class="card-image">
+                                <img src="../Assets/ArticlePage/coollooking3dboxthing.jpg" alt="Blockchain">
+                            </div>
+                            <div class="card-content">
+                                <h3>Blockchain Technology Finds New Applications Beyond Cryptocurrency</h3>
+                                <p>Industries from healthcare to real estate are adopting distributed ledger systems.</p>
+                                <div class="article-meta">
+                                    <span class="date">4 hours ago</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="article-card">
+                        <a href="../html/SingleArticle.html">
+                            <div class="card-image">
+                                <img src="../Assets/ArticlePage/ve headset guy.jpg" alt="VR">
+                            </div>
+                            <div class="card-content">
+                                <h3>Virtual Reality Enters Mainstream with New Consumer Devices</h3>
+                                <p>Affordable headsets and compelling content are driving mass adoption of VR technology.</p>
+                                <div class="article-meta">
+                                    <span class="date">6 hours ago</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
                 </div>
             </section>
 
             <!-- Opinion Section -->
             <section class="section opinion-section">
-                <div class="section-header-box light">
-
+                <div class="section-header">
+                    <h2>Opinion</h2>
+                    <a href="#" class="see-all">See All</a>
                 </div>
                 <div class="opinion-grid">
-                    <div class="opinion-card-box">
-
-                    </div>
-                    <div class="opinion-card-box">
-
-                    </div>
-                    <div class="opinion-card-box">
-
-                    </div>
-                    <div class="opinion-card-box">
-
-                    </div>
+                    <article class="opinion-card">
+                        <a href="../html/SingleArticle.html">
+                            <div class="opinion-content">
+                                <h3>The Future of Democracy in the Digital Age</h3>
+                                <p>As technology reshapes how we communicate and organize, we must consider its implications for democratic institutions.</p>
+                                <div class="author-info">
+                                    <div class="author-avatar">
+                                        <img src="../Assets/ArticlePage/a unc.jpg" alt="Author">
+                                    </div>
+                                    <div class="author-details">
+                                        <span class="author-name">Dr. Michael Chen</span>
+                                        <span class="author-title">Political Analyst</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="opinion-card">
+                        <a href="../html/SingleArticle.html">
+                            <div class="opinion-content">
+                                <h3>Why Climate Action Cannot Wait Another Decade</h3>
+                                <p>The window for meaningful intervention is closing rapidly, and bold action is needed now more than ever.</p>
+                                <div class="author-info">
+                                    <div class="author-avatar">
+                                        <img src="../Assets/ArticlePage/A girl.jpg" alt="Author">
+                                    </div>
+                                    <div class="author-details">
+                                        <span class="author-name">Emma Rodriguez</span>
+                                        <span class="author-title">Environmental Correspondent</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="opinion-card">
+                        <a href="../html/SingleArticle.html">
+                            <div class="opinion-content">
+                                <h3>Rethinking Education for the 21st Century</h3>
+                                <p>Traditional educational models are failing to prepare students for an increasingly complex and automated world.</p>
+                                <div class="author-info">
+                                    <div class="author-avatar">
+                                        <img src="../Assets/ArticlePage/A guy.jpg" alt="Author">
+                                    </div>
+                                    <div class="author-details">
+                                        <span class="author-name">James Wilson</span>
+                                        <span class="author-title">Education Editor</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
                 </div>
             </section>
 
             <!-- Sports & Entertainment -->
             <div class="two-column">
                 <section class="section">
-                    <div class="section-header-box">
-
+                    <div class="section-header">
+                        <h2>Sports</h2>
+                        <a href="#" class="see-all">See All</a>
                     </div>
                     <div class="articles-list">
-                        <div class="list_article_box">
-
-                        </div>
-                        <div class="list_article_box">
-
-                        </div>
-                        <div class="list_article_box">
-
-                        </div>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/Football.jpg" alt="Football">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Championship Race Heats Up as Teams Enter Final Stretch</h4>
+                                    <span class="date">1 hour ago</span>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/basketball.jpg" alt="Basketball">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Rising Star Signs Record-Breaking Contract Extension</h4>
+                                    <span class="date">3 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/Swimming.jpg" alt="Swimming">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Olympic Qualifiers Produce Surprising Results Across Events</h4>
+                                    <span class="date">5 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
                     </div>
                 </section>
 
                 <section class="section">
-                    <div class="section-header-box">
-
+                    <div class="section-header">
+                        <h2>Entertainment</h2>
+                        <a href="#" class="see-all">See All</a>
                     </div>
                     <div class="articles-list">
-                        <div class="list_article_box">
-
-                        </div>
-                        <div class="list_article_box">
-
-                        </div>
-                        <div class="list_article_box">
-
-                        </div>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/movie_theatre.jpg" alt="Movies">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Summer Blockbuster Breaks Opening Weekend Records</h4>
+                                    <span class="date">2 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="list-article">
+                            <a href="../html/SingleArticle.html">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/Music_Festival.jpg" alt="Music">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Music Festival Announces Star-Studded Lineup for 2026</h4>
+                                    <span class="date">4 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
+                        <article class="list-article">
+                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" target="_blank">
+                                <div class="list-image">
+                                    <img src="../Assets/ArticlePage/Telivision.jpg" alt="TV">
+                                </div>
+                                <div class="list-content">
+                                    <h4>Streaming Platform Renews Hit Series for Multiple Seasons</h4>
+                                    <span class="date">6 hours ago</span>
+                                </div>
+                            </a>
+                        </article>
                     </div>
                 </section>
             </div>
@@ -186,12 +486,66 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer" style="height: 200px;">
+    <footer class="footer">
         <div class="container">
-            
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">The <span>NGN</span></a>
+                    <p>Your trusted source for breaking news and in-depth analysis from around the world.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        
+                    </div>
+                    <div class="footer-column">
+                        <h4>Our Pages</h4>
+                        <ul>
+                            <li><a href="../html/Article.html">News</a></li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="../html/Admin.html">Admin Panel</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Features</h4>
+                        <ul>
+                            <li><a href="#">Opinion</a></li>
+                            <li><a href="#">Analysis</a></li>
+                            <li><a href="#">Investigations</a></li>
+                            <li><a href="#">Podcasts</a></li>
+                            <li><a href="#">Videos</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>@2026 Nepal Global News. All rights reserved. The NGN is not responsible for the content of external sites</p>
+            </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="../js/Article.js"></script>
 </body>
 </html>
