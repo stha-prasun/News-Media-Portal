@@ -103,7 +103,7 @@ header.sticky {
   transition: all 0.3s ease;
 }
 .breaking-bar {
-      background: var(--red);
+      background: var(--dark-main-color);
       color: #fff;
       display: flex;
       align-items: center;
@@ -119,7 +119,7 @@ header.sticky {
 
 
     .breaking-label {
-      background: #8b1c13;
+      background: var(--dark-main-color);
       padding: 0 1.2rem;
       height: 100%;
       display: flex;
@@ -199,7 +199,7 @@ header.sticky {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: var(--red);
+      background:var(--dark-main-color);
       color: #fff;
       font-size: 0.68rem;
       font-weight: 700;
@@ -289,8 +289,8 @@ header.sticky {
       line-height: 1.82;
       color: #111;
       border-left: 4px solid var(--main);
-      padding-left: 1.2rem;
-      margin-bottom: 1.8rem;
+      padding-left: 3rem;
+      margin-bottom: 3rem;
       text-align: justify;
       padding-right: 1.2rem;
     }
@@ -300,8 +300,8 @@ header.sticky {
       line-height: 1.82;
       font-weight: 500;
       color: #000000;
-    padding-right: 1.2rem;
-      padding-left: 1.2rem;
+    padding-right: 3rem;
+      padding-left: 3rem;
       margin-bottom: 1.8rem;
       text-align: justify;
     }
