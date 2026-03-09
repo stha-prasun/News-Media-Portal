@@ -1,27 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  font-family: sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-body{
+:root {
+  --main-color: #359381;
+  --dark-main-color: #003329;
+  --grey: #333;
+}
 
-    background-color: rgb(123, 97, 97);
-    color: black;
+body {
+  background: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===================  NAVBAR =================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.8rem 6.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease;
+}
+
+header.sticky {
+  padding: 1rem 6.2rem;
+  background: #000;
+}
+
+.logo {
+  color: #fff;
+  font-size: 2em;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.navigation {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.navigation a {
+  color: #fff;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: 0.3s;
+  position: relative;
+}
+
+.navigation a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s ease;
+}
+
+.navigation a:hover::after,
+.navigation a.active::after {
+  width: 100%;
+}
+
+.navigation a:hover,
+.navigation a.active {
+  background: #fff;
+  color: #000;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
 h1{
-    margin-top: 40px;
-
-}
-
-p{
-    width: 60%;
-    
-    line-height: 1.6;
-    font-size: 18px;
     
 }

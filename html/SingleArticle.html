@@ -3,31 +3,897 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Single Article </title>
+    <title>Single Article – The NGN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap">
 
-    <link rel="stylesheet" href="../css/SingleArticle.css">
+    <style>
+        /* ─── RESET & BASE ─── */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
 
+        :root {
+            --main-color: #359381;
+            --dark-main-color: #003329;
+            --grey: #333;
+            --light-grey: #f4f4f4;
+            --mid-grey: #888;
+            --border: #e0e0e0;
+        }
+
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: "Poppins", sans-serif;
+            color: var(--grey);
+        }
+
+        /* ─── NAVBAR ─── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.8rem 6.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.85);
+            transition: all 0.3s ease;
+        }
+
+        header.sticky {
+            padding: 1rem 6.2rem;
+            background: #000;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 2em;
+            font-weight: 700;
+            pointer-events: none;
+            font-family: "Playfair Display", serif;
+            letter-spacing: 1px;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .navigation a {
+            color: #fff;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .navigation a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .navigation a:hover::after,
+        .navigation a.active::after {
+            width: 100%;
+        }
+
+        .navigation a:hover,
+        .navigation a.active {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* ─── HERO BANNER ─── */
+        .article-hero {
+            margin-top: 90px;
+            width: 100%;
+            height: 520px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.55);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3rem 6.2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+        }
+
+        .article-category {
+            display: inline-block;
+            background: var(--main-color);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.35rem 0.9rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-overlay h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: #fff;
+            line-height: 1.2;
+            max-width: 780px;
+            font-weight: 900;
+        }
+
+        /* ─── ARTICLE META ─── */
+        .article-meta-bar {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 1.6rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .author-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--main-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .meta-info {
+            flex: 1;
+        }
+
+        .meta-info .author-name {
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: var(--grey);
+        }
+
+        .meta-info .meta-details {
+            font-size: 0.78rem;
+            color: var(--mid-grey);
+            margin-top: 2px;
+        }
+
+        .meta-info .meta-details span {
+            margin-right: 1rem;
+        }
+
+        .share-bar {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1.5px solid var(--border);
+            background: transparent;
+            color: var(--grey);
+            transition: 0.25s;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .share-btn:hover {
+            background: var(--main-color);
+            border-color: var(--main-color);
+            color: #fff;
+        }
+
+        /* ─── ARTICLE BODY ─── */
+        .article-wrapper {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 5rem;
+            display: grid;
+            grid-template-columns: 1fr 220px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* Main content */
+        .article-content .lead {
+            font-size: 1.18rem;
+            font-weight: 500;
+            line-height: 1.75;
+            color: #222;
+            margin-bottom: 1.8rem;
+            border-left: 4px solid var(--main-color);
+            padding-left: 1.2rem;
+        }
+
+        .article-content p {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: #444;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.55rem;
+            color: var(--grey);
+            margin: 2.5rem 0 1rem;
+            font-weight: 700;
+        }
+
+        .article-content h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark-main-color);
+            margin: 2rem 0 0.7rem;
+        }
+
+        /* Pull quote */
+        .pull-quote {
+            background: var(--light-grey);
+            border-left: 5px solid var(--main-color);
+            padding: 1.5rem 1.8rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .pull-quote p {
+            font-family: "Playfair Display", serif;
+            font-size: 1.18rem;
+            font-style: italic;
+            color: var(--dark-main-color);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .pull-quote cite {
+            display: block;
+            font-size: 0.8rem;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--mid-grey);
+            margin-top: 0.6rem;
+            font-family: "Poppins", sans-serif;
+        }
+
+        /* Inline image */
+        .inline-image {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .inline-image img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .inline-image figcaption {
+            font-size: 0.78rem;
+            color: var(--mid-grey);
+            padding: 0.6rem 0.2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Tags */
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.85rem;
+            border-radius: 20px;
+            background: var(--light-grey);
+            color: var(--grey);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .tag:hover {
+            background: var(--main-color);
+            color: #fff;
+            border-color: var(--main-color);
+        }
+
+        /* ─── SIDEBAR ─── */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-block {
+            background: var(--light-grey);
+            border-radius: 8px;
+            padding: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-block h4 {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--main-color);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.6rem;
+        }
+
+        .related-item {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .related-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .related-thumb {
+            width: 58px;
+            height: 50px;
+            border-radius: 5px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .related-item p {
+            font-size: 0.8rem;
+            font-weight: 600;
+            line-height: 1.35;
+            color: var(--grey);
+            cursor: pointer;
+        }
+
+        .related-item p:hover {
+            color: var(--main-color);
+        }
+
+        .related-item span {
+            font-size: 0.7rem;
+            color: var(--mid-grey);
+            display: block;
+            margin-top: 3px;
+        }
+
+        /* Newsletter widget */
+        .newsletter-widget {
+            background: var(--dark-main-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .newsletter-widget h4 {
+            color: var(--main-color);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+
+        .newsletter-widget p {
+            color: #aaa;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-widget input {
+            width: 100%;
+            padding: 0.65rem 0.9rem;
+            border-radius: 6px;
+            border: none;
+            font-family: "Poppins", sans-serif;
+            font-size: 0.82rem;
+            margin-bottom: 0.6rem;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            outline: none;
+        }
+
+        .newsletter-widget input::placeholder { color: #777; }
+
+        .newsletter-widget button {
+            width: 100%;
+            padding: 0.65rem;
+            background: var(--main-color);
+            color: #fff;
+            font-family: "Poppins", sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .newsletter-widget button:hover {
+            background: #2a7a6a;
+        }
+
+        /* ─── MORE ARTICLES SECTION ─── */
+        .more-articles {
+            background: var(--light-grey);
+            padding: 4rem 6.2rem;
+        }
+
+        .section-title {
+            font-family: "Playfair Display", serif;
+            font-size: 1.8rem;
+            color: var(--grey);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 55px;
+            height: 3px;
+            background: var(--main-color);
+            border-radius: 2px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.25s, box-shadow 0.25s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-body {
+            padding: 1.2rem;
+        }
+
+        .card-cat {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--main-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .card-body h3 {
+            font-size: 0.97rem;
+            font-weight: 700;
+            color: var(--grey);
+            line-height: 1.4;
+            margin-bottom: 0.6rem;
+        }
+
+        .card-body p {
+            font-size: 0.8rem;
+            color: var(--mid-grey);
+            line-height: 1.55;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--mid-grey);
+            font-weight: 500;
+        }
+
+        .read-more-link {
+            color: var(--main-color);
+            font-weight: 700;
+            font-size: 0.78rem;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: #000;
+            color: #aaa;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.82rem;
+        }
+
+        footer .footer-logo {
+            font-family: "Playfair Display", serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            header,
+            header.sticky {
+                padding: 1.2rem 2rem;
+            }
+
+            .hero-overlay {
+                padding: 2rem;
+            }
+
+            .article-hero {
+                height: 380px;
+            }
+
+            .article-wrapper {
+                grid-template-columns: 1fr;
+                padding: 2rem 1.2rem 4rem;
+                gap: 2rem;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .more-articles {
+                padding: 3rem 2rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navigation {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0.5rem;
+                padding-top: 1rem;
+            }
+
+            .navigation.open {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .article-hero {
+                height: 300px;
+            }
+
+            .hero-overlay h1 {
+                font-size: 1.5rem;
+            }
+
+            .article-meta-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <header>
-      <h2 class="logo">The NGN</h2>
-      <nav class="navigation">
-        <a href="Article.html">News</a>
-        <a href="#">About Us</a>
-        <a href="Admin.html">Admin Panel</a>
-        <a href="SingleArticle.html"> Article</a>
-      </nav>
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+
+    <!-- ── NAVBAR ── -->
+    <header id="main-header">
+        <h2 class="logo">The NGN</h2>
+        <nav class="navigation" id="nav-menu">
+            <a href="Article.html">News</a>
+            <a href="#">About Us</a>
+            <a href="Admin.html">Admin Panel</a>
+        </nav>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
-    
-    <h1>  NEWSSSSSSS </h1>
-    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur expedita aliquid eveniet in, veritatis nobis totam possimus omnis, magni ab exercitationem repudiandae at recusandae suscipit ducimus? Excepturi nihil harum id.</p>
+
+    <!-- ── HERO ── -->
+    <section class="article-hero">
+        <img
+            src="/Assets/SingleArticle/Newspaper.png"
+            alt="Article Hero Image"
+        />
+        <div class="hero-overlay">
+            <span class="article-category">World News</span>
+            <h1>Global Leaders Convene for Emergency Summit Amid Rising Geopolitical Tensions</h1>
+        </div>
+    </section>
+
+    <!-- ── META BAR ── -->
+    <div class="article-meta-bar">
+        <div class="author-avatar">JD</div>
+        <div class="meta-info">
+            <div class="author-name">James Dorsey</div>
+            <div class="meta-details">
+                <span>📅 March 9, 2026</span>
+                <span>⏱ 6 min read</span>
+                <span>👁 14.2K views</span>
+            </div>
+        </div>
+        <div class="share-bar">
+            <button class="share-btn">&#x1F517; Copy Link</button>
+            <button class="share-btn">&#x1F426; Tweet</button>
+        </div>
+    </div>
+
+    <!-- ── ARTICLE + SIDEBAR ── -->
+    <div class="article-wrapper">
+
+        <!-- Main Article Content -->
+        <article class="article-content">
+
+            <p class="lead">
+                World leaders gathered in Geneva on Monday for an emergency diplomatic summit following a series of escalating border disputes and trade conflicts that have strained international relations to their breaking point.
+            </p>
+
+            <p>
+                The summit, organised under the auspices of the United Nations, brings together heads of state from more than 60 countries with a singular mandate: to establish a framework for de-escalation before tensions spiral into full-scale economic or military conflict. Delegations arrived throughout the weekend, greeted by unusually tight security protocols and a palpable sense of urgency that permeated the halls of the Palais des Nations.
+            </p>
+
+            <h2>What Triggered the Crisis?</h2>
+
+            <p>
+                The immediate trigger was a series of naval incidents in disputed waters that left several vessels damaged and diplomatic channels strained almost to breaking point. Behind those incidents, analysts point to a deeper realignment of global power dynamics, accelerated by shifting energy markets, the weaponisation of supply chains, and domestic political pressures in several major economies.
+            </p>
+
+            <p>
+                "We are not here merely to negotiate. We are here because the alternative — inaction — is no longer acceptable," said the UN Secretary-General in opening remarks that set the tone for what promises to be several days of intense closed-door negotiations.
+            </p>
+
+            <div class="pull-quote">
+                <p>"History will judge not whether we came to the table, but whether we had the courage to remain at it when the conversations became difficult."</p>
+                <cite>— UN Secretary-General, Opening Address</cite>
+            </div>
+
+            <h2>Key Points of Contention</h2>
+
+            <p>
+                Three major fault lines dominate the agenda. First, maritime boundaries in the South China Sea region, where overlapping claims have repeatedly led to confrontations at sea. Second, a brewing trade war over rare-earth minerals deemed critical to the green energy transition — a resource battle that has reshaped alliances in unexpected ways. Third, and perhaps most delicate, is the question of cybersecurity norms following a string of state-attributed attacks on civilian infrastructure.
+            </p>
+
+            <figure class="inline-image">
+                <img
+                    src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=900&q=80"
+                    alt="Diplomats in a conference hall"
+                />
+                <figcaption>Delegates assemble inside the main conference hall at the Palais des Nations, Geneva. (Photo: UN Media)</figcaption>
+            </figure>
+
+            <h3>Energy Security at the Core</h3>
+
+            <p>
+                Underneath each of these disputes runs a common current: energy. The accelerated global push toward renewables has made lithium, cobalt, and rare-earth elements the new oil — and the countries that control them are acutely aware of their leverage. Several delegations have privately indicated that any framework agreement will need to address resource access guarantees before their governments can sign on.
+            </p>
+
+            <p>
+                European representatives have proposed a multilateral mineral-access treaty modelled on international water-sharing agreements, though initial reactions from resource-rich nations have been cautious. Meanwhile, smaller developing nations have pushed for a "resource equity" clause that would prevent monopolistic hoarding by larger powers.
+            </p>
+
+            <h2>What Comes Next?</h2>
+
+            <p>
+                Negotiations are scheduled to run through Thursday, with a joint communiqué expected on Friday morning. Diplomatic observers caution that a final document, even if signed, would be only a first step. Implementation mechanisms, enforcement, and verification remain deeply contested, and several governments face domestic opposition to any compromise that could be characterised as a concession.
+            </p>
+
+            <p>
+                Protests have begun gathering outside the Palais des Nations — a mix of peace activists, environmental groups, and nationalist demonstrators — reflecting the deeply polarised domestic landscapes that each leader must navigate upon returning home.
+            </p>
+
+            <p>
+                For now, the cameras wait, the translators listen, and the world watches a room full of people who know the weight of the moment, trying to find the precise combination of words that might hold it together.
+            </p>
+
+            <!-- Tags -->
+            <div class="article-tags">
+                <span class="tag">#WorldNews</span>
+                <span class="tag">#Geopolitics</span>
+                <span class="tag">#UnitedNations</span>
+                <span class="tag">#Diplomacy</span>
+                <span class="tag">#EnergyPolicy</span>
+                <span class="tag">#Geneva2026</span>
+            </div>
+
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-block">
+                <h4>Related Stories</h4>
+
+                <div class="related-item">
+                    <img class="related-thumb"
+                        src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?w=120&q=70"
+                        alt="related"
+                    />
+                    <div>
+                        <p>Rare-Earth Race: Why Nations Are Fighting Over Minerals</p>
+                        <span>March 7, 2026</span>
+                    </div>
+                </div>
+
+                <div class="related-item">
+                    <img class="related-thumb"
+                        src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=120&q=70"
+                        alt="related"
+                    />
+                    <div>
+                        <p>Naval Incident in Disputed Waters Sparks Diplomatic Row</p>
+                        <span>March 5, 2026</span>
+                    </div>
+                </div>
+
+                <div class="related-item">
+                    <img class="related-thumb"
+                        src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=120&q=70"
+                        alt="related"
+                    />
+                    <div>
+                        <p>Cyber Warfare: The New Front in Global Conflict</p>
+                        <span>March 3, 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="newsletter-widget">
+                <h4>Newsletter</h4>
+                <p>Get the most important stories delivered to your inbox every morning.</p>
+                <input type="email" placeholder="Your email address" />
+                <button>Subscribe Free</button>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- ── MORE ARTICLES ── -->
+    <section class="more-articles">
+        <h2 class="section-title">More From The NGN</h2>
+        <div class="cards-grid">
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=600&q=70" alt="Economy">
+                <div class="card-body">
+                    <span class="card-cat">Economy</span>
+                    <h3>Central Banks Signal Rate Cuts as Inflation Finally Cools</h3>
+                    <p>After two years of aggressive monetary tightening, policymakers across major economies are preparing to pivot.</p>
+                </div>
+                <div class="card-footer">
+                    <span>March 8, 2026</span>
+                    <span class="read-more-link">Read →</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=70" alt="Tech">
+                <div class="card-body">
+                    <span class="card-cat">Technology</span>
+                    <h3>AI Regulation Talks Stall in Brussels Over Sovereignty Concerns</h3>
+                    <p>Member states remain divided on how far legislation should go in governing frontier AI systems.</p>
+                </div>
+                <div class="card-footer">
+                    <span>March 8, 2026</span>
+                    <span class="read-more-link">Read →</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=70" alt="Climate">
+                <div class="card-body">
+                    <span class="card-cat">Climate</span>
+                    <h3>Record Temperatures Recorded Across Three Continents This Winter</h3>
+                    <p>Scientists warn that 2026 is on track to become the warmest year in recorded history.</p>
+                </div>
+                <div class="card-footer">
+                    <span>March 7, 2026</span>
+                    <span class="read-more-link">Read →</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
 </body>
+</html>
 
    
 </html>
