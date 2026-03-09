@@ -76,7 +76,7 @@ header {
 }
 
 header.sticky {
-  padding: 1rem 6.2rem;
+  padding: 1rem 2.2rem;
   background: #000;
 }
 
@@ -139,7 +139,6 @@ header.sticky {
   border-radius: 3px;
   transition: all 0.3s ease;
 }
-
 /* Breaking News Ticker */
 .ticker {
     background: var(--primary-home-dark);
@@ -596,101 +595,16 @@ header.sticky {
 }
 
 /* Footer */
-.footer {
-    background: var(--bg-dark);
-    color: white;
-    padding-top: 60px;
+.site-footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 14px;
 }
 
-.footer-top {
-    display: grid;
-    grid-template-columns: 1.5fr 2.5fr;
-    gap: 60px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-logo {
-    font-size: 28px;
-    font-weight: 700;
-    font-family: 'Arial Black', sans-serif;
-    color: white;
-    display: inline-block;
-    margin-bottom: 15px;
-}
-
-.footer-logo span {
-    color: var(--primary-home);
-}
-
-.footer-brand p {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 20px;
-    line-height: 1.7;
-}
-
-.social-links {
-    display: flex;
-    gap: 15px;
-}
-
-.social-links a {
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    transition: background 0.2s;
-}
-
-.social-links a:hover {
-    background: var(--primary-home);
-}
-
-.footer-links {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-}
-
-.footer-column h4 {
-    font-family: 'Arial', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    color: white;
-}
-
-.footer-column ul {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.footer-column a {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
-    transition: color 0.2s;
-}
-
-.footer-column a:hover {
-    color: white;
-}
-
-.footer-bottom {
-    padding: 25px 0;
-    text-align: center;
-}
-
-.footer-bottom p {
-    font-family: 'Arial', sans-serif;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
+.site-footer p {
+  margin: 0;
 }
 
 /* Creating a Responive UI */
@@ -928,12 +842,8 @@ header.sticky {
     }
 
     /* Footer */
-    .footer-top {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .footer-links {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    site-footer {
+    font-size: 12px;
+    padding: 12px 8px;
+  }
 }
