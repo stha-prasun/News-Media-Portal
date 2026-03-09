@@ -713,7 +713,7 @@ header.sticky {
 
     .sec {
         padding: 2rem;
-    }s
+    }
 
 
     /* Article */
@@ -742,7 +742,6 @@ header.sticky {
 @media (max-width: 768px) {
 
     body {
-        /* Bring content even closer under the navbar on tablets */
         padding-top: 70px;
     }
 
@@ -770,33 +769,45 @@ header.sticky {
         z-index: 1001;
     }
 
-    #text {
-        font-size: 3em;
+    /* Hero */
+    .hero-section {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
+    .hero-image img {
+        height: 260px;
+    }
 
-    /* Article */
-    .hero-section {
-        gap: 16px;
+    .hero-content h1 {
+        font-size: 24px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
     }
 
     .hero-sidebar {
         flex-direction: column;
     }
 
-    .hero-article-box {
-        height: 300px;
+    /* Sidebar articles — restore vertical stack layout */
+    .sidebar-article a {
+        flex-direction: row;
+        align-items: flex-start;
     }
 
-    .sidebar-box {
-        height: 80px;
+    .sidebar-image {
+        width: 100px;
+        height: 70px;
     }
 
+    /* Article grids */
     .articles-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .tech-grid {
+    .articles-grid.three-col {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -809,24 +820,29 @@ header.sticky {
         grid-template-columns: 1fr;
     }
 
-    
+    /* Footer */
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 
-    
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 480px) {
     body {
-        /* Further adjust for small screens to keep content aligned with the fixed navbar */
-        padding-top: 80spx;
+        padding-top: 70px;
     }
 
-    /* Nav bar responsiveness */
+    /* Nav bar */
     header {
         display: flex;
-        flex-wrap: nowrap; /* prevent wrapping */
+        flex-wrap: nowrap;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem 2rem;
+        padding: 1rem 1.5rem;
         position: fixed;
         top: 0;
         left: 0;
@@ -836,7 +852,8 @@ header.sticky {
     }
 
     .logo {
-        flex: 1; /* logo takes only necessary space */
+        font-size: 1.5em;
+        flex: 1;
     }
 
     .hamburger {
@@ -848,7 +865,7 @@ header.sticky {
     .navigation {
         position: fixed;
         top: 0;
-        right: -100%; /* hidden by default */
+        right: -100%;
         height: 100vh;
         flex-direction: column;
         background: rgba(0,0,0,0.95);
@@ -860,31 +877,63 @@ header.sticky {
     }
 
     .navigation.active {
-        right: 0; /* slide in */
+        right: 0;
     }
 
-    /* Article Responsiveness */
-
+    /* Container */
     .container {
         padding: 0 16px;
     }
 
-    .logo-box {
-        width: 100px;
-        height: 30px;
+    /* Hero */
+    .hero-section {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
-    .hero-article-box {
-        height: 250px;
+    .hero-image img {
+        height: 220px;
     }
 
+    .hero-content h1 {
+        font-size: 20px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    /* Sidebar articles */
+    .sidebar-article a {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .sidebar-image {
+        width: 90px;
+        height: 65px;
+    }
+
+    .sidebar-content h3 {
+        font-size: 13px;
+    }
+
+    /* Article grids */
     .articles-grid {
         grid-template-columns: 1fr;
     }
 
-    .tech-grid {
+    .articles-grid.three-col {
         grid-template-columns: 1fr;
     }
 
-    
+    /* Footer */
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
