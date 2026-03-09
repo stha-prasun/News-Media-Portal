@@ -1,899 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single Article – The NGN</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap">
-
-    <style>
-        /* ─── RESET & BASE ─── */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            list-style: none;
-            text-decoration: none;
-        }
-
-        :root {
-            --main-color: #359381;
-            --dark-main-color: #003329;
-            --grey: #333;
-            --light-grey: #f4f4f4;
-            --mid-grey: #888;
-            --border: #e0e0e0;
-        }
-
-        body {
-            background: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
-            font-family: "Poppins", sans-serif;
-            color: var(--grey);
-        }
-
-        /* ─── NAVBAR ─── */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.8rem 6.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.85);
-            transition: all 0.3s ease;
-        }
-
-        header.sticky {
-            padding: 1rem 6.2rem;
-            background: #000;
-        }
-
-        .logo {
-            color: #fff;
-            font-size: 2em;
-            font-weight: 700;
-            pointer-events: none;
-            font-family: "Playfair Display", serif;
-            letter-spacing: 1px;
-        }
-
-        .navigation {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .navigation a {
-            color: #fff;
-            padding: 0.4rem 0.9rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        .navigation a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 0;
-            height: 2px;
-            background: #fff;
-            transition: width 0.3s ease;
-        }
-
-        .navigation a:hover::after,
-        .navigation a.active::after {
-            width: 100%;
-        }
-
-        .navigation a:hover,
-        .navigation a.active {
-            background: #fff;
-            color: #000;
-        }
-
-        /* Hamburger */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #fff;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        /* ─── HERO BANNER ─── */
-        .article-hero {
-            margin-top: 90px;
-            width: 100%;
-            height: 520px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .article-hero img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: brightness(0.55);
-        }
-
-        .hero-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 3rem 6.2rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-        }
-
-        .article-category {
-            display: inline-block;
-            background: var(--main-color);
-            color: #fff;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 0.35rem 0.9rem;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-        }
-
-        .hero-overlay h1 {
-            font-family: "Playfair Display", serif;
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            color: #fff;
-            line-height: 1.2;
-            max-width: 780px;
-            font-weight: 900;
-        }
-
-        /* ─── ARTICLE META ─── */
-        .article-meta-bar {
-            max-width: 820px;
-            margin: 0 auto;
-            padding: 1.6rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .author-avatar {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background: var(--main-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-weight: 700;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .meta-info {
-            flex: 1;
-        }
-
-        .meta-info .author-name {
-            font-weight: 600;
-            font-size: 0.92rem;
-            color: var(--grey);
-        }
-
-        .meta-info .meta-details {
-            font-size: 0.78rem;
-            color: var(--mid-grey);
-            margin-top: 2px;
-        }
-
-        .meta-info .meta-details span {
-            margin-right: 1rem;
-        }
-
-        .share-bar {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .share-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.4rem 0.85rem;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1.5px solid var(--border);
-            background: transparent;
-            color: var(--grey);
-            transition: 0.25s;
-            font-family: "Poppins", sans-serif;
-        }
-
-        .share-btn:hover {
-            background: var(--main-color);
-            border-color: var(--main-color);
-            color: #fff;
-        }
-
-        /* ─── ARTICLE BODY ─── */
-        .article-wrapper {
-            max-width: 820px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem 5rem;
-            display: grid;
-            grid-template-columns: 1fr 220px;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        /* Main content */
-        .article-content .lead {
-            font-size: 1.18rem;
-            font-weight: 500;
-            line-height: 1.75;
-            color: #222;
-            margin-bottom: 1.8rem;
-            border-left: 4px solid var(--main-color);
-            padding-left: 1.2rem;
-        }
-
-        .article-content p {
-            font-size: 1rem;
-            line-height: 1.85;
-            color: #444;
-            margin-bottom: 1.5rem;
-        }
-
-        .article-content h2 {
-            font-family: "Playfair Display", serif;
-            font-size: 1.55rem;
-            color: var(--grey);
-            margin: 2.5rem 0 1rem;
-            font-weight: 700;
-        }
-
-        .article-content h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--dark-main-color);
-            margin: 2rem 0 0.7rem;
-        }
-
-        /* Pull quote */
-        .pull-quote {
-            background: var(--light-grey);
-            border-left: 5px solid var(--main-color);
-            padding: 1.5rem 1.8rem;
-            margin: 2rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .pull-quote p {
-            font-family: "Playfair Display", serif;
-            font-size: 1.18rem;
-            font-style: italic;
-            color: var(--dark-main-color);
-            line-height: 1.65;
-            margin: 0;
-        }
-
-        .pull-quote cite {
-            display: block;
-            font-size: 0.8rem;
-            font-style: normal;
-            font-weight: 600;
-            color: var(--mid-grey);
-            margin-top: 0.6rem;
-            font-family: "Poppins", sans-serif;
-        }
-
-        /* Inline image */
-        .inline-image {
-            width: 100%;
-            border-radius: 8px;
-            overflow: hidden;
-            margin: 2rem 0;
-        }
-
-        .inline-image img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .inline-image figcaption {
-            font-size: 0.78rem;
-            color: var(--mid-grey);
-            padding: 0.6rem 0.2rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        /* Tags */
-        .article-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 2.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.3rem 0.85rem;
-            border-radius: 20px;
-            background: var(--light-grey);
-            color: var(--grey);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .tag:hover {
-            background: var(--main-color);
-            color: #fff;
-            border-color: var(--main-color);
-        }
-
-        /* ─── SIDEBAR ─── */
-        .sidebar {
-            position: sticky;
-            top: 100px;
-        }
-
-        .sidebar-block {
-            background: var(--light-grey);
-            border-radius: 8px;
-            padding: 1.4rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .sidebar-block h4 {
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--main-color);
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.6rem;
-        }
-
-        .related-item {
-            display: flex;
-            gap: 0.8rem;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .related-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .related-thumb {
-            width: 58px;
-            height: 50px;
-            border-radius: 5px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .related-item p {
-            font-size: 0.8rem;
-            font-weight: 600;
-            line-height: 1.35;
-            color: var(--grey);
-            cursor: pointer;
-        }
-
-        .related-item p:hover {
-            color: var(--main-color);
-        }
-
-        .related-item span {
-            font-size: 0.7rem;
-            color: var(--mid-grey);
-            display: block;
-            margin-top: 3px;
-        }
-
-        /* Newsletter widget */
-        .newsletter-widget {
-            background: var(--dark-main-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .newsletter-widget h4 {
-            color: var(--main-color);
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 0.6rem;
-        }
-
-        .newsletter-widget p {
-            color: #aaa;
-            font-size: 0.82rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .newsletter-widget input {
-            width: 100%;
-            padding: 0.65rem 0.9rem;
-            border-radius: 6px;
-            border: none;
-            font-family: "Poppins", sans-serif;
-            font-size: 0.82rem;
-            margin-bottom: 0.6rem;
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            outline: none;
-        }
-
-        .newsletter-widget input::placeholder { color: #777; }
-
-        .newsletter-widget button {
-            width: 100%;
-            padding: 0.65rem;
-            background: var(--main-color);
-            color: #fff;
-            font-family: "Poppins", sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.25s;
-        }
-
-        .newsletter-widget button:hover {
-            background: #2a7a6a;
-        }
-
-        /* ─── MORE ARTICLES SECTION ─── */
-        .more-articles {
-            background: var(--light-grey);
-            padding: 4rem 6.2rem;
-        }
-
-        .section-title {
-            font-family: "Playfair Display", serif;
-            font-size: 1.8rem;
-            color: var(--grey);
-            margin-bottom: 2rem;
-            position: relative;
-            padding-bottom: 0.8rem;
-        }
-
-        .section-title::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 55px;
-            height: 3px;
-            background: var(--main-color);
-            border-radius: 2px;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.8rem;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            transition: transform 0.25s, box-shadow 0.25s;
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
-
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .card-body {
-            padding: 1.2rem;
-        }
-
-        .card-cat {
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--main-color);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .card-body h3 {
-            font-size: 0.97rem;
-            font-weight: 700;
-            color: var(--grey);
-            line-height: 1.4;
-            margin-bottom: 0.6rem;
-        }
-
-        .card-body p {
-            font-size: 0.8rem;
-            color: var(--mid-grey);
-            line-height: 1.55;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 1.2rem;
-            border-top: 1px solid var(--border);
-            font-size: 0.75rem;
-            color: var(--mid-grey);
-            font-weight: 500;
-        }
-
-        .read-more-link {
-            color: var(--main-color);
-            font-weight: 700;
-            font-size: 0.78rem;
-        }
-
-        /* ─── FOOTER ─── */
-        footer {
-            background: #000;
-            color: #aaa;
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.82rem;
-        }
-
-        footer .footer-logo {
-            font-family: "Playfair Display", serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        /* ─── RESPONSIVE ─── */
-        @media (max-width: 900px) {
-            header,
-            header.sticky {
-                padding: 1.2rem 2rem;
-            }
-
-            .hero-overlay {
-                padding: 2rem;
-            }
-
-            .article-hero {
-                height: 380px;
-            }
-
-            .article-wrapper {
-                grid-template-columns: 1fr;
-                padding: 2rem 1.2rem 4rem;
-                gap: 2rem;
-            }
-
-            .sidebar {
-                position: static;
-            }
-
-            .more-articles {
-                padding: 3rem 2rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .navigation {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                gap: 0.5rem;
-                padding-top: 1rem;
-            }
-
-            .navigation.open {
-                display: flex;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .article-hero {
-                height: 300px;
-            }
-
-            .hero-overlay h1 {
-                font-size: 1.5rem;
-            }
-
-            .article-meta-bar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single Article</title>
+  <link rel="stylesheet" href="../css/SingleArticle.css" />
 </head>
 <body>
-
-    <!-- ── NAVBAR ── -->
-    <header id="main-header">
+  <!-- Navbar -->
+    <header>
+      <a href="HomePage.html">
         <h2 class="logo">The NGN</h2>
-        <nav class="navigation" id="nav-menu">
-            <a href="Article.html">News</a>
-            <a href="#">About Us</a>
-            <a href="Admin.html">Admin Panel</a>
-        </nav>
-        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+      </a>
+      <nav class="navigation">
+        <a href="Article.html">News</a>
+        <a href="#">About Us</a>
+        <a href="Admin.html">Admin Panel</a>
+      </nav>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </header>
 
-    <!-- ── HERO ── -->
-    <section class="article-hero">
+<div class="breaking-bar">
+    <span class="breaking-label">🔴 Breaking</span>
+    <div class="ticker-wrap">
+      <span class="ticker-text">
+         Government collapses amid nationwide anti-corruption protests led by Generation Z students · Public anger over corruption scandals forces ruling coalition to step down · Reform agenda gains momentum as the Rastriya Swatantra Party (RSP) surges in the latest election results · Political analysts say the rise of RSP reflects growing demand for transparency and new leadership · Talks begin in Kathmandu over forming a new government following the dramatic political shift.
+      </span>
+    </div>
+  </div>
+<div class = "News-Heading">
+  <h1> A Turning Point in Nepali Politics </h1>
+</div>
+
+<section class="hero">
+    <img class="singhadurbar"
+      src="/Assets/SingleArticle/Singhadurbar.png"
+      alt="Nepal Election 2026"
+    />
+    <div class="hero-overlay">
+      <div class="hero-top">
+        <span class="category-badge">Nepal Politics</span>
+        <span class="live-badge"><span class="live-dot"></span> A Political Change </span>
+      </div>
+      <h1 class="hero-title">
+        RSP Storms to Landmark Victory in Nepal's Historic 2026 Election
+      </h1>
+      <h2 class="hero-subtitle">
+        From Gen Z Protests to the Rise of RSP: A Turning Point in Nepali Politics.
+      </h2>
+    </div>
+ </section>
+    <div class="meta-bar">
+    <div class="author-info">
+      <div class="name">Pramish Devkota · NGN Bureau</div>
+      <div class="meta-details">
+        <span>📅 March 9, 2026</span>
+        <span>  1M views</span>
+      </div>
+    </div>
+    <div class="share-buttons">
+      <button class="share-btn" id="copy-btn">🔗 Copy Link</button>
+      <button class="share-btn">🐦 Tweet</button>
+    </div>
+  </div>
+
+   <article class="article-content">
+
+      <p class="lead">
+        In recent years, Nepal witnessed one of the most significant political awakenings driven largely by young citizens. What began as frustration among the youth gradually transformed into a nationwide movement that reshaped the country’s political landscape. From the rise of the Generation Z protest movement to the eventual election results, the political momentum ultimately contributed to the remarkable rise of the Rastriya Swatantra Party (RSP).
+
+      <p>
+       The early stages of the movement were fueled by widespread dissatisfaction with traditional political leadership. Many young Nepalis felt that decades of governance by established parties had failed to address corruption, unemployment, and economic stagnation.
+      </p>
+
+      <p>
+        Social media platforms became powerful tools for organizing protests and spreading awareness. Young activists used digital platforms to mobilize thousands of citizens, particularly students and first-time voters. What began as scattered demonstrations soon evolved into coordinated protests across major cities, including Kathmandu, Pokhara, and Biratnagar.
+      </p>
+ 
+
+       <div class="scoreboard">
+        <div class="scoreboard-header">
+          <span>🗳 Election Results 2026 — House of Representatives (165 Direct Seats)</span>
+          <span class="updated">Updated: 9 Mar, 06:00 NST</span>
+        </div>
+        <div class="scoreboard-row head">
+          <span>Party</span>
+          <span style="text-align:right">Won</span>
+          <span style="text-align:right">Leading</span>
+        </div>
+
+        <div class="scoreboard-row">
+          <div>
+            <span class="party-name">Rastriya Swatantra Party</span>
+            <span class="party-abbr">RSP · Balen Shah</span>
+            <div class="bar-wrap"><div class="bar-fill rsp" style="width:71%"></div></div>
+          </div>
+          <span class="seats-won top">117</span>
+          <span class="seats-leading">+8</span>
+        </div>
+
+        <div class="scoreboard-row">
+          <div>
+            <span class="party-name">Nepali Congress</span>
+            <span class="party-abbr">NC · Gagan Thapa </span>
+            <div class="bar-wrap"><div class="bar-fill nc" style="width:18%"></div></div>
+          </div>
+          <span class="seats-won">21</span>
+          <span class="seats-leading">+3</span>
+        </div>
+
+        <div class="scoreboard-row">
+          <div>
+            <span class="party-name">CPN (Maoist Centre)</span>
+            <span class="party-abbr">CPM · Pushpa Kamal Dahal</span>
+            <div class="bar-wrap"><div class="bar-fill cpm" style="width:9%"></div></div>
+          </div>
+          <span class="seats-won">10</span>
+          <span class="seats-leading">+2</span>
+        </div>
+
+        <div class="scoreboard-row">
+          <div>
+            <span class="party-name">CPN-UML</span>
+            <span class="party-abbr">CPN-UML · KP Sharma Oli</span>
+            <div class="bar-wrap"><div class="bar-fill cpml" style="width:8%"></div></div>
+          </div>
+          <span class="seats-won">9</span>
+          <span class="seats-leading">+1</span>
+        </div>
+
+        <div class="scoreboard-row">
+          <div>
+            <span class="party-name">Others / Independents · Mahabir Pun </span>
+            <span class="party-abbr">—</span>
+            <div class="bar-wrap"><div class="bar-fill others" style="width:6%"></div></div>
+          </div>
+          <span class="seats-won">1</span>
+          <span class="seats-leading">—</span>
+        </div>
+      </div>
+
+      <h2>From the Streets to Parliament</h2>
+
+      <p>
+        The RSP's rise is inseparable from the convulsions that shook Nepal in September 2025. What began as protests against a government ban on 26 social media platforms — including YouTube, Facebook, and WhatsApp — rapidly transformed into a mass movement against corruption, economic stagnation, and the perceived impunity of political dynasties. The images that captured the world: a generation of young Nepalis, many of whom had watched relatives leave for Gulf states or Europe in search of work, standing in the streets demanding accountability.
+      </p>
+
+      <div class="pull-quote">
+        <p>"The nation was fed up with the old corrupt leaders. This was not just an election — it was a reckoning that had been building for thirty years."</p>
+        <cite>— Birendra Kumar Mehta, RSP Central Committee Member · March 8, 2026</cite>
+      </div>
+
+      <p>
+        The protests ultimately toppled the government of KP Sharma Oli, leading President Ram Chandra Paudel to invoke Article 61 of the Constitution and appoint former Chief Justice Sushila Karki as interim Prime Minister — making her the first woman to lead a government in Nepal's history. Her mandate was singular: stabilise the country and deliver free, fair elections within six months.
+      </p>
+
+      <figure class="article-image">
         <img
-            src="/Assets/SingleArticle/Newspaper.png"
-            alt="Article Hero Image"
+          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=900&q=80"
+          alt="Voters at a polling station in Nepal"
         />
-        <div class="hero-overlay">
-            <span class="article-category">World News</span>
-            <h1>Global Leaders Convene for Emergency Summit Amid Rising Geopolitical Tensions</h1>
-        </div>
-    </section>
+        <figcaption>Voters queue at a polling station in Kathmandu on election day, 5 March 2026. Turnout was among the highest recorded in Nepal's democratic history. (Photo: Reuters)</figcaption>
+      </figure>
 
-    <!-- ── META BAR ── -->
-    <div class="article-meta-bar">
-        <div class="author-avatar">JD</div>
-        <div class="meta-info">
-            <div class="author-name">James Dorsey</div>
-            <div class="meta-details">
-                <span>📅 March 9, 2026</span>
-                <span>⏱ 6 min read</span>
-                <span>👁 14.2K views</span>
-            </div>
+      <h2>Who Is Balen Shah?</h2>
+
+      <p>
+        For many outside Nepal, the name Balendra Shah is new. For Nepalis — especially those under 35 — he has been a cultural touchstone for years. Trained as a civil engineer at Purbanchal University, Shah broke into public consciousness as a rapper whose lyrics targeted corruption and inequality in terms that resonated deeply with urban youth. Songs that were once just anthems became the soundtrack of the September uprising.
+      </p>
+
+      <p>
+        His 2022 election as Kathmandu's mayor — standing as an independent against both Nepali Congress and the CPN — was the first tremor that signalled the establishment's vulnerability. As mayor, he bulldozed illegal encroachments, cracked down on waste dumping in the Bagmati River, and earned a reputation for blunt, results-oriented governance. The RSP, which he co-founded the same year, translated that reputation into a national political machine with astonishing speed.
+      </p>
+
+      <div class="key-facts">
+        <h4>Key Facts at a Glance</h4>
+        <ul>
+          <li>Election held: 5 March 2026 — the first general election since the 2025 Gen Z uprising</li>
+          <li>RSP won 117+ of 165 direct seats; landslide majority confirmed</li>
+          <li>Balen Shah defeated former four-time PM KP Sharma Oli in Jhapa-5 by nearly 4:1</li>
+          <li>Nearly 19 million eligible voters participated; turnout among highest in a decade</li>
+          <li>Interim PM Sushila Karki — Nepal's first female head of government — oversaw the election</li>
+          <li>Government formation talks expected to begin this week; PM announcement imminent</li>
+        </ul>
+      </div>
+
+      <h3>A Diaspora-Powered Campaign</h3>
+
+      <p>
+        The RSP's campaign operation was unlike anything Nepal's political scene had seen before. A team of over 660 social media coordinators drove a digital strategy that saturated platforms popular with both domestic voters and the Nepali diaspora — particularly communities in the United States, the Gulf, and Australia. Significant funding flowed in from abroad, reflecting a diaspora that had long felt disconnected from a homeland it still deeply cared about.
+      </p>
+
+      <h2>What Comes Next?</h2>
+
+      <p>
+        With a commanding majority in the House of Representatives, Balen Shah is widely expected to be nominated as Prime Minister within days. The harder task begins the morning after the celebrations: delivering on promises of zero tolerance for corruption, free university education, universal healthcare, and economic reforms aimed at reversing Nepal's staggering brain drain — a crisis in which thousands of skilled citizens emigrate every month.
+      </p>
+
+      <p>
+        Political analyst Sunil Babu Pant noted that Nepal's new leadership will also need to carefully balance its geopolitical relationships — navigating the ever-present tensions between giant neighbours India and China while pursuing an independent foreign policy focused on national interests. For a country that has historically found itself squeezed between the two Asian superpowers, the RSP's rise adds a new and unpredictable variable.
+      </p>
+
+      <p>
+        For now, across Kathmandu's chai shops and rooftops, in the valleys and the hills, a country that has lived through a remarkable six months is allowing itself, cautiously, to hope.
+      </p>
+
+      <!-- Tags -->
+      <div class="tags">
+        <span class="tag">#Nepal2026</span>
+        <span class="tag">#BalenShah</span>
+        <span class="tag">#RSP</span>
+        <span class="tag">#ElectionResults</span>
+        <span class="tag">#SouthAsia</span>
+        <span class="tag">#GenZProtests</span>
+        <span class="tag">#Kathmandu</span>
+      </div>
+
+      <!-- Author bio -->
+      <div class="author-bio">
+        <div class="bio-avatar">PR</div>
+        <div>
+          <h4>Pramish Devkota</h4>
+          <span>· NGN Bureau</span>
+          <p>Pramish has covered Nepali politics for over a decade, reporting through constitutional crises, earthquake recovery, and now the country's most significant democratic shift in a generation.</p>
         </div>
-        <div class="share-bar">
-            <button class="share-btn">&#x1F517; Copy Link</button>
-            <button class="share-btn">&#x1F426; Tweet</button>
+      </div>
+
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-block">
+        <h4>Related Stories</h4>
+
+        <div class="related-item">
+          <img class="related-thumb"
+            src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?w=120&q=70"
+            alt="related" />
+          <div class="related-text">
+            <p>Nepal's Gen Z Uprising: How a Social Media Ban Toppled a Government</p>
+            <span>September 12, 2025</span>
+          </div>
         </div>
+
+        <div class="related-item">
+          <img class="related-thumb"
+            src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=120&q=70"
+            alt="related" />
+          <div class="related-text">
+            <p>Sushila Karki: Nepal's First Female Head of Government Steps Down After Delivering Elections</p>
+            <span>March 7, 2026</span>
+          </div>
+        </div>
+
+        <div class="related-item">
+          <img class="related-thumb"
+            src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=120&q=70"
+            alt="related" />
+          <div class="related-text">
+            <p>Brain Drain Crisis: Why Thousands of Nepalis Leave Every Month</p>
+            <span>February 20, 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-block">
+        <h4>Trending Now</h4>
+        <div class="trending-list">
+          <div class="trending-item">
+            <span class="trending-num">01</span>
+            <p>RSP Victory: What It Means for Nepal-India Relations</p>
+          </div>
+          <div class="trending-item">
+            <span class="trending-num">02</span>
+            <p>KP Sharma Oli Concedes Defeat in Jhapa-5</p>
+          </div>
+          <div class="trending-item">
+            <span class="trending-num">03</span>
+            <p>Nepal's Diaspora Celebrates Balen Shah Win Abroad</p>
+          </div>
+          <div class="trending-item">
+            <span class="trending-num">04</span>
+            <p>Who Will Be in Nepal's New Cabinet?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="newsletter-block">
+  <h4>Subscribe to NGN</h4>
+  <input type="email" placeholder="Enter your email">
+  <button>Subscribe Free</button>
+</div>
+  </div>
+</aside>
+  <!-- ══════ MORE ARTICLES ══════ -->
+  <section class="more-section">
+    <div class="more-inner">
+      <h2 class="section-heading">More From The NGN</h2>
+      <div class="cards-grid">
+      </div>
     </div>
-
-    <!-- ── ARTICLE + SIDEBAR ── -->
-    <div class="article-wrapper">
-
-        <!-- Main Article Content -->
-        <article class="article-content">
-
-            <p class="lead">
-                World leaders gathered in Geneva on Monday for an emergency diplomatic summit following a series of escalating border disputes and trade conflicts that have strained international relations to their breaking point.
-            </p>
-
-            <p>
-                The summit, organised under the auspices of the United Nations, brings together heads of state from more than 60 countries with a singular mandate: to establish a framework for de-escalation before tensions spiral into full-scale economic or military conflict. Delegations arrived throughout the weekend, greeted by unusually tight security protocols and a palpable sense of urgency that permeated the halls of the Palais des Nations.
-            </p>
-
-            <h2>What Triggered the Crisis?</h2>
-
-            <p>
-                The immediate trigger was a series of naval incidents in disputed waters that left several vessels damaged and diplomatic channels strained almost to breaking point. Behind those incidents, analysts point to a deeper realignment of global power dynamics, accelerated by shifting energy markets, the weaponisation of supply chains, and domestic political pressures in several major economies.
-            </p>
-
-            <p>
-                "We are not here merely to negotiate. We are here because the alternative — inaction — is no longer acceptable," said the UN Secretary-General in opening remarks that set the tone for what promises to be several days of intense closed-door negotiations.
-            </p>
-
-            <div class="pull-quote">
-                <p>"History will judge not whether we came to the table, but whether we had the courage to remain at it when the conversations became difficult."</p>
-                <cite>— UN Secretary-General, Opening Address</cite>
-            </div>
-
-            <h2>Key Points of Contention</h2>
-
-            <p>
-                Three major fault lines dominate the agenda. First, maritime boundaries in the South China Sea region, where overlapping claims have repeatedly led to confrontations at sea. Second, a brewing trade war over rare-earth minerals deemed critical to the green energy transition — a resource battle that has reshaped alliances in unexpected ways. Third, and perhaps most delicate, is the question of cybersecurity norms following a string of state-attributed attacks on civilian infrastructure.
-            </p>
-
-            <figure class="inline-image">
-                <img
-                    src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=900&q=80"
-                    alt="Diplomats in a conference hall"
-                />
-                <figcaption>Delegates assemble inside the main conference hall at the Palais des Nations, Geneva. (Photo: UN Media)</figcaption>
-            </figure>
-
-            <h3>Energy Security at the Core</h3>
-
-            <p>
-                Underneath each of these disputes runs a common current: energy. The accelerated global push toward renewables has made lithium, cobalt, and rare-earth elements the new oil — and the countries that control them are acutely aware of their leverage. Several delegations have privately indicated that any framework agreement will need to address resource access guarantees before their governments can sign on.
-            </p>
-
-            <p>
-                European representatives have proposed a multilateral mineral-access treaty modelled on international water-sharing agreements, though initial reactions from resource-rich nations have been cautious. Meanwhile, smaller developing nations have pushed for a "resource equity" clause that would prevent monopolistic hoarding by larger powers.
-            </p>
-
-            <h2>What Comes Next?</h2>
-
-            <p>
-                Negotiations are scheduled to run through Thursday, with a joint communiqué expected on Friday morning. Diplomatic observers caution that a final document, even if signed, would be only a first step. Implementation mechanisms, enforcement, and verification remain deeply contested, and several governments face domestic opposition to any compromise that could be characterised as a concession.
-            </p>
-
-            <p>
-                Protests have begun gathering outside the Palais des Nations — a mix of peace activists, environmental groups, and nationalist demonstrators — reflecting the deeply polarised domestic landscapes that each leader must navigate upon returning home.
-            </p>
-
-            <p>
-                For now, the cameras wait, the translators listen, and the world watches a room full of people who know the weight of the moment, trying to find the precise combination of words that might hold it together.
-            </p>
-
-            <!-- Tags -->
-            <div class="article-tags">
-                <span class="tag">#WorldNews</span>
-                <span class="tag">#Geopolitics</span>
-                <span class="tag">#UnitedNations</span>
-                <span class="tag">#Diplomacy</span>
-                <span class="tag">#EnergyPolicy</span>
-                <span class="tag">#Geneva2026</span>
-            </div>
-
-        </article>
-
-        <!-- Sidebar -->
-        <aside class="sidebar">
-
-            <div class="sidebar-block">
-                <h4>Related Stories</h4>
-
-                <div class="related-item">
-                    <img class="related-thumb"
-                        src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?w=120&q=70"
-                        alt="related"
-                    />
-                    <div>
-                        <p>Rare-Earth Race: Why Nations Are Fighting Over Minerals</p>
-                        <span>March 7, 2026</span>
-                    </div>
-                </div>
-
-                <div class="related-item">
-                    <img class="related-thumb"
-                        src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=120&q=70"
-                        alt="related"
-                    />
-                    <div>
-                        <p>Naval Incident in Disputed Waters Sparks Diplomatic Row</p>
-                        <span>March 5, 2026</span>
-                    </div>
-                </div>
-
-                <div class="related-item">
-                    <img class="related-thumb"
-                        src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=120&q=70"
-                        alt="related"
-                    />
-                    <div>
-                        <p>Cyber Warfare: The New Front in Global Conflict</p>
-                        <span>March 3, 2026</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="newsletter-widget">
-                <h4>Newsletter</h4>
-                <p>Get the most important stories delivered to your inbox every morning.</p>
-                <input type="email" placeholder="Your email address" />
-                <button>Subscribe Free</button>
-            </div>
-
-        </aside>
-
-    </div>
-
-    <!-- ── MORE ARTICLES ── -->
-    <section class="more-articles">
-        <h2 class="section-title">More From The NGN</h2>
-        <div class="cards-grid">
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=600&q=70" alt="Economy">
-                <div class="card-body">
-                    <span class="card-cat">Economy</span>
-                    <h3>Central Banks Signal Rate Cuts as Inflation Finally Cools</h3>
-                    <p>After two years of aggressive monetary tightening, policymakers across major economies are preparing to pivot.</p>
-                </div>
-                <div class="card-footer">
-                    <span>March 8, 2026</span>
-                    <span class="read-more-link">Read →</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=70" alt="Tech">
-                <div class="card-body">
-                    <span class="card-cat">Technology</span>
-                    <h3>AI Regulation Talks Stall in Brussels Over Sovereignty Concerns</h3>
-                    <p>Member states remain divided on how far legislation should go in governing frontier AI systems.</p>
-                </div>
-                <div class="card-footer">
-                    <span>March 8, 2026</span>
-                    <span class="read-more-link">Read →</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=70" alt="Climate">
-                <div class="card-body">
-                    <span class="card-cat">Climate</span>
-                    <h3>Record Temperatures Recorded Across Three Continents This Winter</h3>
-                    <p>Scientists warn that 2026 is on track to become the warmest year in recorded history.</p>
-                </div>
-                <div class="card-footer">
-                    <span>March 7, 2026</span>
-                    <span class="read-more-link">Read →</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
+  </section>
 </body>
-</html>
-
-   
 </html>
