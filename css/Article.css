@@ -137,6 +137,10 @@
     border-radius: 3px;
     transition: all 0.3s ease;
     }
+
+    .hamburger.hide {
+    display: none;
+  }
     /* Breaking News Ticker */
     .ticker {
         background: var(--primary-home-dark);
@@ -586,7 +590,7 @@
     align-items: center;
     gap: 12px;
     margin-top: auto;
-}
+}   
 
     .author-avatar {
         width: 48px;
