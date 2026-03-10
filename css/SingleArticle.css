@@ -26,6 +26,7 @@ body {
   background: #ffffff;
   min-height: 100vh;
   overflow-x: hidden;
+
 }
 
 /* ===================  NAVBAR =================== */
@@ -170,6 +171,7 @@ header.sticky {
       object-fit: cover;
       object-position: center top;
       filter: brightness(0.42);
+      width: 100%;
     }
 
     .hero-overlay {
@@ -248,7 +250,8 @@ header.sticky {
     .meta-bar {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 1.3rem 2rem;
+      padding-right: 1rem;
+      padding-left: 1rem;
       display: flex;
       align-items: center;
       gap: 1.2rem;
@@ -296,10 +299,12 @@ header.sticky {
       line-height: 1.82;
       color: #111;
       border-left: 4px solid var(--main);
-      padding-left: 3rem;
-      margin-bottom: 3rem;
+      
+      margin-bottom: 1.8rem;
       text-align: justify;
-      padding-right: 3rem;
+      padding-right: 1rem;
+      padding-left: 1rem;
+      
     }
 
     .article-content p {
@@ -307,10 +312,11 @@ header.sticky {
       line-height: 1.82;
       font-weight: 500;
       color: #000000;
-    padding-right: 3rem;
-      padding-left: 3rem;
+    padding-right: 1rem;
+      padding-left: 1rem;
       margin-bottom: 1.8rem;
       text-align: justify;
+
     }
 
     .article-content h2 {
@@ -319,6 +325,8 @@ header.sticky {
       font-weight: 700;
       color: var(--grey);
       margin: 2.8rem 0 1rem;
+      padding-right: 1rem;
+      padding-left: 1rem;
     }
 
     .article-content h3 {
@@ -326,10 +334,13 @@ header.sticky {
       font-weight: 700;
       color: var(--dark-main);
       margin: 2rem 0 0.6rem;
+      padding-right: 1rem;
+      padding-left: 1rem;
     }
 .pull-quote {
       margin: 2.4rem 0;
-      padding: 1.6rem 2rem;
+      padding-right: 1rem;
+      padding-left: 1rem;
       background: var(--light);
       border-left: 5px solid var(--main);
       border-radius: 0 8px 8px 0;
@@ -342,6 +353,7 @@ header.sticky {
       color: var(--dark-main);
       line-height: 1.7;
       margin: 0;
+      padding-left: 1rem;
     }
 
     .pull-quote cite {
@@ -356,6 +368,8 @@ header.sticky {
 
     /* ── Election result scoreboard ── */
     .scoreboard {
+      padding-right: 1rem;
+      padding-left: 1rem;
       margin: 2.4rem 0;
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -373,8 +387,8 @@ header.sticky {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-left: 3rem;
-      padding-right: 3rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
 
     .scoreboard-header .updated {
@@ -402,7 +416,8 @@ header.sticky {
       letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--mid-grey);
-      padding: 3rem 3rem;
+      padding: 0.85rem 1.4rem;
+      
     }
 
     .party-name { font-weight: 600; }
@@ -451,9 +466,12 @@ header.sticky {
     }
 
     .article-image img {
-      height: 360px;
-      object-fit: cover;
-    }
+      width:100%;
+height:auto;
+max-height:600px;
+object-fit:cover;
+}
+    
 
     .article-image figcaption {
       font-size: 0.74rem;
@@ -562,10 +580,11 @@ header.sticky {
     ══════════════════════════════════════ */
     .sidebar {
       position: sticky;
-      top: 2rem;
+      top: 120px;
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+  
     }
 
   
@@ -682,20 +701,18 @@ header.sticky {
     .newsletter-block input::placeholder { color: #666; }
 
     .newsletter-block button {
-      width: 100%;
-      padding: 0.6rem;
-      background: var(--main);
-      color: #2b2020;
-      font-family: "Poppins", sans-serif;
-      font-size: 0.82rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 6px;
-      cursor:pointer;
-      transition: 0.22s;
-    }
+     width:100%;
+  padding:0.55rem;
+  border:none;
+  border-radius:6px;
+  background:var(--main-color);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
 
-    .newsletter-block button:hover { background: #2a7a6a; }
+    .newsletter-block button:hover { background:#0091d5
+}
 
     /* ══════════════════════════════════════
        MORE ARTICLES
@@ -805,8 +822,13 @@ header.sticky {
       .scoreboard-row { grid-template-columns: 1fr 60px 60px; font-size: 0.78rem; }
     }
 
-    .hero .singhadurbar{
-       width: 100%;
-   height: 100%;
-   object-fit: cover;
-    }
+   
+  .page-body{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2.3fr 1fr;
+
+  gap:2rem;
+  
+}
