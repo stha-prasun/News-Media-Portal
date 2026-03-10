@@ -310,11 +310,12 @@ header.sticky {
 
 .card {
   min-width: 300px;
-  background: white;
+  background: black;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   transition: 0.3s;
+  color: white;
 }
 
 .card img {
@@ -329,7 +330,7 @@ header.sticky {
 
 .card p {
   padding: 10px 15px 20px;
-  color: #555;
+  color: white;
 }
 
 .nav-btn {
