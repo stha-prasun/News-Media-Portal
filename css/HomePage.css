@@ -411,6 +411,10 @@ header.sticky {
     z-index: 1001;
   }
 
+  .hamburger.hide {
+    display: none;
+  }
+
   #text {
     font-size: 3em;
   }
