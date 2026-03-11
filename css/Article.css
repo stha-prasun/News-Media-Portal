@@ -32,7 +32,7 @@
         font-family: 'Georgia', 'Times New Roman', serif;
         background-color: var(--bg-white);
         min-height: 100vh;
-        padding-top: 120px;
+        padding-top: 106.6px;
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -782,7 +782,8 @@
 
     @media (max-width: 480px) {
         body {
-            padding-top: 70px;
+            padding-top: 68px;
+            background-color: var(--bg-light);
         }
 
         /* Nav bar */
