@@ -17,7 +17,7 @@
 }
 
 body {
-  background: #ffffff;
+  background-color: #f3f8f7;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -318,19 +318,13 @@ header.sticky {
   }
 }
 
-
 /* The team and our Values section */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: #fafaf8;
-  color: #111;
-  min-height: 100vh;
 }
 
 .page-wrapper {
@@ -341,6 +335,7 @@ body {
 
 /* ── SECTION HEADERS ── */
 .section-title {
+  color: var(--main-color);
   font-weight: 300;
   font-size: clamp(48px, 8vw, 76px);
   letter-spacing: -1px;
@@ -371,9 +366,10 @@ body {
   border: 1px solid #e5e5e5;
   border-radius: 4px;
   overflow: hidden;
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
-
 
 .card-image {
   width: 100%;
@@ -386,10 +382,22 @@ body {
   overflow: hidden;
 }
 
-.card:nth-child(1) .card-image { background: #1a1a2e; --fg: #e8d5b7; }
-.card:nth-child(2) .card-image { background: #2d4a3e; --fg: #f0c987; }
-.card:nth-child(3) .card-image { background: #3d1a3a; --fg: #e8c4d4; }
-.card:nth-child(4) .card-image { background: #1a2d4a; --fg: #c4d8e8; }
+.card:nth-child(1) .card-image {
+  background: #1a1a2e;
+  --fg: #e8d5b7;
+}
+.card:nth-child(2) .card-image {
+  background: #2d4a3e;
+  --fg: #f0c987;
+}
+.card:nth-child(3) .card-image {
+  background: #3d1a3a;
+  --fg: #e8c4d4;
+}
+.card:nth-child(4) .card-image {
+  background: #1a2d4a;
+  --fg: #c4d8e8;
+}
 
 .avatar-circle {
   width: 64px;
@@ -417,17 +425,20 @@ body {
 }
 
 .card-image::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
+  background: radial-gradient(
+    circle at 30% 70%,
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 60%
+  );
   pointer-events: none;
 }
 
 .card-body {
   padding: 16px 18px 20px;
 }
-
 
 .card-name {
   font-size: 21px;
@@ -444,14 +455,16 @@ body {
   border-radius: 100px;
   border: 1px solid #111;
   background: transparent;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.4px;
   cursor: pointer;
   color: #111;
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .card-btn:hover {
@@ -469,6 +482,7 @@ body {
 
 /* ── VALUES SECTION ── */
 .values-grid {
+  background-color: #f3f8f7;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding-bottom: 40px;
@@ -490,7 +504,7 @@ body {
   border-right: 1px solid #ddd;
 }
 
-.value-item:not(:nth-child(3n+1)) {
+.value-item:not(:nth-child(3n + 1)) {
   padding-left: 28px;
 }
 
@@ -573,4 +587,49 @@ body {
     padding-right: 0 !important;
     padding-bottom: 24px;
   }
+}
+
+/*==========Slider==========*/
+
+@keyframes slides {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  padding: 30px 0px;
+  white-space: nowrap;
+  position: relative;
+}
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  content: "";
+  width: 250px;
+  height: 100%;
+  z-index: 2;
+}
+
+.logos:before {
+  left: 0;
+}
+
+.logos:after {
+  right: 0;
+}
+
+.logo_items {
+  display: inline-block;
+  animation: 35s slides infinite linear;
+}
+
+.logo_items img {
+  height: 100px;
 }
