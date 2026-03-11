@@ -633,3 +633,13 @@ header.sticky {
 .logo_items img {
   height: 100px;
 }
+
+.partners-title{
+  text-align:center;
+  font-size:48px;
+  color:var(--main-color);
+  margin-top:80px;
+  margin-bottom:30px;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
