@@ -19,6 +19,7 @@ with multiple pages, article views, and an admin page.
 
 ## Project Structure
 
+```
 News-Media-Portal
 │
 ├── Assets/                # Images and media used in the project
@@ -32,6 +33,7 @@ News-Media-Portal
 ├── Admin.html             # Admin interface layout
 │
 └── README.md              # Project documentation
+```
 
 ------------------------------------------------------------------------
 
