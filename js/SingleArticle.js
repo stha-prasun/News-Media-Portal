@@ -5,7 +5,7 @@
                 btn.addEventListener("click", () => {
                     navigator.clipboard.writeText(window.location.href).then(() => {
                         btn.textContent = "✓ Copied!";
-                        setTimeout(() => btn.textContent = "🔗 Copy Link", 2000);
+                        setTimeout(() => btn.textContent = " Copy Link", 2000);
                     });
                 });
             }
@@ -41,7 +41,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// ======= STICKY HEADER =======
+// STICKY HEADER 
 const header = document.querySelector("header");
 window.addEventListener("scroll", () => {
   if (window.scrollY > 50) {

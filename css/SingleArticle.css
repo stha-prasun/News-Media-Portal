@@ -29,7 +29,7 @@ body {
 
 }
 
-/* ===================  NAVBAR =================== */
+/*   NAVBAR  */
 header {
   position: fixed;
   top: 0;
@@ -588,9 +588,9 @@ object-fit:cover;
     .author-bio span { font-size: 0.72rem; color: var(--main); font-weight: 600; display: block; margin-bottom: 0.45rem; }
     .author-bio p { font-size: 0.8rem; color: var(--mid-grey); line-height: 1.6; margin: 0; }
 
-    /* ══════════════════════════════════════
+    /* 
        SIDEBAR
-    ══════════════════════════════════════ */
+    */
     .sidebar {
       position: sticky;
       top: 120px;
@@ -727,9 +727,9 @@ object-fit:cover;
     .newsletter-block button:hover { background:#0091d5
 }
 
-    /* ══════════════════════════════════════
+    /* 
        MORE ARTICLES
-    ══════════════════════════════════════ */
+     */
     .more-section {
       background: var(--light);
       padding: 4rem 2rem;
@@ -813,9 +813,9 @@ object-fit:cover;
 
     .card-read { color: var(--main); font-weight: 700; font-size: 0.74rem; }
 
-    /* ══════════════════════════════════════
+    /*
        RESPONSIVE
-    ══════════════════════════════════════ */
+    */
     @media (max-width: 960px) {
       .page-body { grid-template-columns: 1fr; gap: 2.5rem; }
       .sidebar { position: static; }
@@ -928,7 +928,7 @@ object-fit:cover;
   }
 
   .navigation.active {
-    right: 0; /* slide in */
+    right: 0; 
   }
 
   .site-footer {
