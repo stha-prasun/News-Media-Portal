@@ -19,12 +19,19 @@ with multiple pages, article views, and an admin page.
 
 ## Project Structure
 
-News-Media-Portal │ ├── Assets/ \# Images and media used in the project
-├── css/ \# Stylesheets ├── js/ \# JavaScript files ├── index.html \#
-Homepage ├── About.html \# About page ├── Article.html \# Page listing
-multiple articles ├── SingleArticle.html \# Individual article view ├──
-Admin.html \# Admin interface layout └── README.md \# Project
-documentation
+News-Media-Portal
+│
+├── Assets/                # Images and media used in the project
+├── css/                   # Stylesheets
+├── js/                    # JavaScript files
+│
+├── index.html             # Homepage
+├── About.html             # About page
+├── Article.html           # Page listing multiple articles
+├── SingleArticle.html     # Individual article view
+├── Admin.html             # Admin interface layout
+│
+└── README.md              # Project documentation
 
 ------------------------------------------------------------------------
 
@@ -50,13 +57,13 @@ git clone https://github.com/stha-prasun/News-Media-Portal.git
 
 ## Pages Overview
 
-  Page                 Description
-  -------------------- ----------------------------------------
-  index.html           Main landing page
-  About.html           Information about the news portal
-  Article.html         Displays multiple news articles
-  SingleArticle.html   Shows a full article in detail
-  Admin.html           Admin page layout for managing content
+| Page | Description |
+|------|-------------|
+| index.html | Main landing page |
+| About.html | Information about the news portal |
+| Article.html | Displays multiple news articles |
+| SingleArticle.html | Shows a full article in detail |
+| Admin.html | Admin page layout for managing content |
 
 ------------------------------------------------------------------------
 
