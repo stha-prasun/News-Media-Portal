@@ -257,7 +257,7 @@
     }
 
     .hero-article:hover .hero-content h1 {
-        color: var(--primary);
+        color: var(--primary-home-dark);
     }
 
     .hero-content p {
@@ -336,7 +336,7 @@
     }
 
     .sidebar-article:hover h3 {
-        color: var(--primary);
+        color: var(--primary-home-dark);
     }
 
     .sidebar-content .date {
@@ -446,7 +446,7 @@
 }
 
     .article-card:hover .card-content h3 {
-    color: var(--primary);
+    color: var(--primary-home-dark);
 }
 
     .card-content p {
@@ -527,7 +527,7 @@
     }
 
     .list-article:hover h4 {
-        color: var(--primary);
+        color: var(--primary-home);
     }
 
     .list-content .date {
